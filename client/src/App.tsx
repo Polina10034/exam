@@ -3,15 +3,23 @@ import './App.scss';
 import {createApiClient, Ticket} from './api';
 
 export type AppState = {
+	//hide: boolean, 
 	tickets?: Ticket[],
 	search: string;
+	
 }
 
 const api = createApiClient();
 
 export class App extends React.PureComponent<{}, AppState> {
 
+	// constructor(props: any) {
+	// 	super(props);
+	// 	this.state = {show: true}
+	//   }
+
 	state: AppState = {
+		//hide: false,
 		search: ''
 	}
 
@@ -23,16 +31,29 @@ export class App extends React.PureComponent<{}, AppState> {
 		});
 	}
 
+	operation(){
+		alert('hi');
+		this.setState({
+		//	hide: true
+		});
+	}
+	miniMize(){
+
+	}
+
+
 	renderTickets = (tickets: Ticket[]) => {
 
 		const filteredTickets = tickets
 			.filter((t) => (t.title.toLowerCase() + t.content.toLowerCase()).includes(this.state.search.toLowerCase()));
 
 
-		return (<ul className='tickets'>
+		return (<ul className='tickets' >
 			{filteredTickets.map((ticket) => (<li key={ticket.id} className='ticket'>
+				<div className='hide' onClick={this.operation.bind(this)}>Hide</div>
 				<h5 className='title'>{ticket.title}</h5>
 				<p className='content'>{ticket.content}</p>
+				<div className='showLess' onClick={this.miniMize.bind(this)}>Show less</div>
 				<footer>
 					<div className='meta-data'>By {ticket.userEmail} | { new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>
