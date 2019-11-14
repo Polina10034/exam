@@ -15,7 +15,7 @@ export class App extends React.PureComponent<{}, AppState> {
 
 	// constructor(props: any) {
 	// 	super(props);
-	// 	this.state = {show: true}
+	// 	this.state = {show: true};
 	//   }
 
 	state: AppState = {
@@ -31,15 +31,13 @@ export class App extends React.PureComponent<{}, AppState> {
 		});
 	}
 
-	operation(){
-		alert('hi');
-		this.setState({
-		//	hide: true
-		});
-	}
-	miniMize(){
+	// operation(){
+		
+	// 	this.className= 'hiddenTicket;'
+	// }
+	// miniMize(){
 
-	}
+	// }
 
 
 	renderTickets = (tickets: Ticket[]) => {
@@ -50,10 +48,10 @@ export class App extends React.PureComponent<{}, AppState> {
 
 		return (<ul className='tickets' >
 			{filteredTickets.map((ticket) => (<li key={ticket.id} className='ticket'>
-				<div className='hide' onClick={this.operation.bind(this)}>Hide</div>
+				<div className='hide'>Hide</div>
 				<h5 className='title'>{ticket.title}</h5>
 				<p className='content'>{ticket.content}</p>
-				<div className='showLess' onClick={this.miniMize.bind(this)}>Show less</div>
+				<div className='showLess' >Show less</div>
 				<footer>
 					<div className='meta-data'>By {ticket.userEmail} | { new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>

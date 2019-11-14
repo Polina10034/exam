@@ -19,6 +19,14 @@ body {
 		color: #7a92a5;
 		font-size: 12px;
 		margin: 12px 5px;
+
+		.blueFont{
+			color: #3899ec;
+
+		}
+		&:hover{
+			cursor: pointer;
+		}
 	}
 
 	header {
@@ -64,6 +72,9 @@ body {
 		margin: 0;
 		padding: 0;
 
+		.hiddenTicket{
+			display: none;
+		}
 		.ticket {
 			width: 100%;
 			flex-shrink: 0;
@@ -77,6 +88,8 @@ body {
 			padding: 10px 20px;
 			transition: box-shadow .2s ease-in-out;
 			position: relative;
+			color: #7a92a5;
+
 
 			&:hover  {
 				box-shadow: 0 2px 6px 1px #d3d7da;
@@ -84,6 +97,7 @@ body {
 
 			&:hover  .hide {
 				display: block;
+				cursor: pointer;
 			}
 			
 
@@ -96,6 +110,8 @@ body {
 			}
 
 			.hide{
+				width: 20%;
+				height: 10%;
 				padding-left: 93%;
 				display: none;
 			}

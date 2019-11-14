@@ -17,6 +17,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -32,15 +33,50 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <script>
+      $(document).ready(function(){
+        // var root = document.getElementById('root');
+        // var ticket = root.getElementsByClassName("ticket");
+        // var hideButton = root.getElementsByClassName("hide");
+        // hideButton.
+        var count = 0;
+        console.log($(".results"));
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        console.log($(".hide").parent());
+        $(".hide").on('click', function(event){
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          if($(this).parent().hasClass("ticket")){
+              $(this).parent().removeClass("ticket");
+              $(this).parent().addClass("hiddenTicket");
+              count++;
+            
+          }
+          console.log(count);
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+
+          if(count == 1){
+          $(".results").append("<i class='restore'> ( <i class='inner'>" + count + "</i> hidden tickets <i class='blueFont'>- restore)</i></i>");
+         
+          }
+          else{
+          $("i.inner").replaceWith("<i class='inner'>" + count + "</i>");
+          }
+          console.log($('i.inner'));
+          console.log($('.hiddenTicket'));
+
+
+          $('i.restore').click( function() { 
+             $('li.hiddenTicket').addClass('ticket').removeClass('hiddenTicket');
+           });
+           
+        });
+        
+        
+
+
+        
+      });
+    </script>
   </body>
 </html>
