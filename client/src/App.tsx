@@ -53,7 +53,7 @@ export class App extends React.PureComponent<{}, AppState> {
 				<h5 className='title'>{ticket.title}</h5>
 				<p className='content'>{ticket.content}</p>
 				<div className='showLess' >Show less</div>
-				{ticket.labels? <div className='tags'><span className ='label'>{ticket.labels[0]}</span> <span className ='label'>{ticket.labels[1]}</span></div> :null} 
+				<div className='tags'>{ticket.labels? ticket.labels.map((labels)=>(<span className ='label'>{labels}</span>))  : null }</div>
 				<footer>
 					<div className='meta-data'>By {ticket.userEmail} | { new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>

@@ -51,7 +51,7 @@
         "content": "Hey there,\n\nI have resorted to here, to see if someone can simply help me (it would be greatly appreciated if you could give me your help on this piece of code). I have been trying for a day now, with no luck to get this to work. \n\nI am building an advertising system, which displays adverts across my website. Mostly using repeaters - the ads are stores in an 'Adverts' database - where i can use tags to also control the placement. \n\nI need to be able to do the following:\n\nUpon an Advert being clicked within a repeater, update the Database item click count field which field key would be 'clicks'. \nUpon an Advert being viewed (scrolled over) update the Database item view count field which field key would be 'views'\nOR....update the 'view' count field based on a page being loaded with a repeater/repeater item being on it - if the above is more complex in some way.\n\nHope this makes sense and i would be really grateful for someone's help on this. Much appreciated.\n",
         "userEmail": "an@nagla.gh",
 		"creationTime": 1535681533617,
-		"labels": ["View Count"]
+		"labels": ["View Count", "Problem"]
     },
     {
         "id": "e35f54a8-8794-5d1e-915d-202138500e9b",
