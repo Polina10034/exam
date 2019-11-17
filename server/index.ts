@@ -8,6 +8,7 @@ const app = express();
 const PORT = 3232;
 
 const PAGE_SIZE = 20;
+// const PAGE_SIZE = tempData.length;
 
 app.use(bodyParser.json());
 
@@ -21,9 +22,8 @@ app.use((_, res, next) => {
 app.get('/api/tickets', (req, res) => {
 
 	const page = req.query.page || 1;
-
 	const paginatedData = tempData.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-	
+
 	res.send(paginatedData);
 });
 

@@ -35,14 +35,11 @@
     <div id="root"></div>
     <script>
       $(document).ready(function(){
-        // var root = document.getElementById('root');
-        // var ticket = root.getElementsByClassName("ticket");
-        // var hideButton = root.getElementsByClassName("hide");
-        // hideButton.
+        var showChar =250;
+        var content;
+        var original;
         var count = 0;
-        console.log($(".results"));
 
-        console.log($(".hide").parent());
         $(".hide").on('click', function(event){
           event.stopPropagation();
           event.stopImmediatePropagation();
@@ -52,9 +49,7 @@
               count++;
             
           }
-          console.log(count);
-
-
+         
           if(count == 1){
           $(".results").append("<i class='restore'> ( <i class='inner'>" + count + "</i> hidden tickets <i class='blueFont'>- restore)</i></i>");
          
@@ -62,18 +57,32 @@
           else{
           $("i.inner").replaceWith("<i class='inner'>" + count + "</i>");
           }
-          console.log($('i.inner'));
-          console.log($('.hiddenTicket'));
-
-
+          
           $('i.restore').click( function() { 
              $('li.hiddenTicket').addClass('ticket').removeClass('hiddenTicket');
            });
            
         });
-        
-        
 
+        $(".showLess").on('click', function(event){
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          content = $(this).prev('.content').text();
+          
+           if(content.length > showChar) {
+            original = content;
+            var shortText = jQuery.trim(content).substring(0, 100).trim(this) + "...";
+               $(this).prev('.content').text(shortText);
+              $(this).text('Show more');
+              
+           }
+              else {
+                $(this).prev('.content').text(original);
+                $(this).text('Show less');
+              
+              }
+    
+      })
 
         
       });

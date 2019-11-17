@@ -114,8 +114,16 @@ body {
 				height: 10%;
 				padding-left: 93%;
 				display: none;
+
+				
 			}
 			.showLess {
+				color: #7a92a5;
+				font-size: 12px;
+				margin: 10px 0;
+				flex-shrink: 0;
+			}
+			.showMore {
 				color: #7a92a5;
 				font-size: 12px;
 				margin: 10px 0;

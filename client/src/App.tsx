@@ -3,9 +3,8 @@ import './App.scss';
 import {createApiClient, Ticket} from './api';
 
 export type AppState = {
-	//hide: boolean, 
-	//lable?: null,
 	tickets?: Ticket[],
+	page?: number, 
 	search: string;
 	
 }
@@ -14,35 +13,25 @@ const api = createApiClient();
 
 export class App extends React.PureComponent<{}, AppState> {
 
-	// constructor(props: any) {
-	// 	super(props);
-	// 	this.state = {show: true};
-	//   }
 
 	state: AppState = {
-		//hide: false,
+		
+		page: 0 ,
 		search: ''
 	}
 
 	searchDebounce: any = null;
 
 	async componentDidMount() {
+		
 		this.setState({
 			tickets: await api.getTickets()
 		});
 	}
 
-	// operation(){
-		
-	// 	this.className= 'hiddenTicket;'
-	// }
-	// miniMize(){
-
-	// }
-
 
 	renderTickets = (tickets: Ticket[]) => {
-
+		
 		const filteredTickets = tickets
 			.filter((t) => (t.title.toLowerCase() + t.content.toLowerCase()).includes(this.state.search.toLowerCase()));
 
@@ -53,7 +42,7 @@ export class App extends React.PureComponent<{}, AppState> {
 				<h5 className='title'>{ticket.title}</h5>
 				<p className='content'>{ticket.content}</p>
 				<div className='showLess' >Show less</div>
-				<div className='tags'>{ticket.labels? ticket.labels.map((labels)=>(<span className ='label'>{labels}</span>))  : null }</div>
+				<div className='tags'>{ticket.labels? ticket.labels.map((labels)=>(<span key={labels} className ='label'>{labels}</span>))  : null }</div>
 				<footer>
 					<div className='meta-data'>By {ticket.userEmail} | { new Date(ticket.creationTime).toLocaleString()}</div>
 				</footer>
@@ -68,8 +57,10 @@ export class App extends React.PureComponent<{}, AppState> {
 		this.searchDebounce = setTimeout(async () => {
 			this.setState({
 				search: val
+
 			});
-		}, 300);
+			this.setState({page: newPage})
+		},300);
 	}
 
 	render() {	
